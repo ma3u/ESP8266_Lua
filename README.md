@@ -10,7 +10,7 @@ After you receive the custom build, install the [SiLabs serial driver](https://g
 
 	sudo python esptool.py -p /dev/cu.SLAB_USBtoUART write_flash -fm dio -fs 32m -ff 40m 0x0 your.bin
 
-Of course you'll have to change the paths to point at your files.
+You'll have to change the paths to point to your files.
 
 After flashing the firmware get something like [ESPlorer](http://esp8266.ru/esplorer/) (you'll need [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)) to ease your interaction with the embedded device. Now you're ready to start programming your ESP device.
 
@@ -18,13 +18,12 @@ After flashing the firmware get something like [ESPlorer](http://esp8266.ru/espl
 
 The example contains four files:
 
-* run.lua
 * application.lua
 * wifi-setup.lua
 * relayr-API.lua
 
-The latter two are modules (packages) to ease your interaction with wifi and *relayr Cloud*. **Run.lua** is the initialization of the application. In you setup your wifi credentials, connect for the wifi and wait that your IP is assigned. **Application.lua** is where you'll do most of your programming. In it you connect to the relayr Cloud, read the sensor data, send data to the cloud and receive commands from it.
+The latter two are modules (packages) to ease your interaction with wifi and *relayr Cloud*. **Run.lua** is the initialization of the application. In you setup your wifi credentials, connect for the wifi and wait that your IP is assigned. **Application.lua** is the only file you should care about. There you set up your WiFi and MQTT credentials, connect to relayr Cloud, read the sensor data, send data to the cloud and receive commands from it.
 
-The example application reads the data from a [DHT sensor](https://learn.adafruit.com/dht/overview) connected to the *D2* pin of the **NodeMCU** and sends it to the **relyr Cloud**. It also prints name and value of any command sent from the cloud.
+The example application reads the ADC input of the ESP8266 and controls the output of *D0* pin. It also enables you to change the frequency of sensor readings.
 
 If the **M_DEBUG** variable in relayr-API is **true** then the embedded device is going to inform you about what it is doing (connecting to wifi, creating a MQTT client, sending/receiving a message..).
