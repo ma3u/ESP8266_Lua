@@ -1,18 +1,20 @@
 # NodeMCU
 
-This tutorial will guide you through an example NodeMCU project written in Lua. Your embedded device will continiously send a heartbeat and a reading of a digital input to **relayr Cloud**. Additionally it will be able to receive a command from the cloud which will manipulate one of the digital outputs.
+This tutorial will guide you through an example ESP8266 project written in Lua. Your embedded device will read the temperature and humidity through DHT sensor, read a magnetic switch, and send the data to **relayr Cloud**. Additionally it will be able to receive a command from the cloud which will manipulate one of the digital outputs.
 
 ##Firmware
 
-Download a NodeMCU build [here](http://nodemcu-build.com/). Choose the **dev** branch (MQTT module works better) and select the modules that you need (MQTT and CJSON are required for this project to work).
+Download the NodeMCU build [here](http://nodemcu-build.com/). Choose the **dev** branch (MQTT module works better) and select the modules that you need: cjson, dht, gpio, mqtt, tmr, file and wifi (you can add anything else you would like to play around with).
 
-After you receive the custom build, install the [SiLabs serial driver](https://github.com/nodemcu/nodemcu-devkit/wiki/Getting-Started-on-OSX) (if on OSX), and flash the ESP device with help of [ESPtool](https://github.com/themadinventor/esptool). This command might come handy: 
+After you receive the custom build, install the [SiLabs serial driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip) for NodeMCU boards or [CH340 driver](http://www.wemos.cc/downloads/) for WeMos boards. Flash the ESP device with the help of [ESPtool](https://github.com/themadinventor/esptool). This command might be nifty: 
 
-	sudo python esptool.py -p /dev/cu.SLAB_USBtoUART write_flash -fm dio -fs 32m -ff 40m 0x0 your.bin
+	esptool.py -p /dev/yourUSBoutput write_flash -fm dio -fs 32m -ff 40m 0x0 yourpath/your.bin
 
-Of course you'll have to change the paths to point at your files.
+You'll have to change the paths to point at your port and bin file! To list the names of available ports you can use the following command:
+	
+	ls /dev/cu*
 
-After flashing the firmware get something like [ESPlorer](http://esp8266.ru/esplorer/) (you'll need [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)) to ease your interaction with the embedded device. Now you're ready to start programming your ESP device.
+After flashing the firmware you can use the [ESPlorer](http://esp8266.ru/esplorer/) as a very basic IDE to ease your interaction with the ESP8266 (you'll need [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)). Now you're ready to start programming your ESP device, check out the [docs](https://nodemcu.readthedocs.io/) for some basic commands.
 
 ##Example project
 

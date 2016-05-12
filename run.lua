@@ -4,14 +4,14 @@ local wifi_setup = require 'wifi-setup'
 local app = require 'application'
 
 -- Credentials for wifi (SSID and pasword).
-local wifi_config = { ssid = 'Freeletics', psk = 'unleashyourpotential' }
+local wifi_config = { ssid = 'relayrGuest', psk = 'ChangingTheWorldwithIoT!' }
 -- Credential for MQTT connection to the relayr Cloud.
 --   usr  - username, psk - password
 --   application - main file of your app
 --   callback - function which will get triggered when
 --   when data is received
-local MQTT_config = { usr = '60483757-5849-487d-bfb5-d257e802be43',
-    psk = 'XSjnmKCIigsn',
+local MQTT_config = { usr = '30ffe351-47a6-439d-b1b4-7cf0464a032a',
+    psk = '4hFfk6XtyixC',
     application = 'application',
     callback = 'received_data'
 }
