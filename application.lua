@@ -23,14 +23,19 @@ end
 local function send_data()
     -- Read DHT data.
     local status, temp, humi = dht.read(dhtInput)
-    -- Read the magnetic switch input.
-    local magneticValue = gpio.read(magneticInput)
+    -- Read the magnetic switch input
+    local magneticValue = 0
+    if gpio.read(magneticInput)==1 then
+        magneticValue = false
+    else
+        magneticValue = true
+    end
     -- If the reading staus is 'ok' print it.
     if status == dht.OK then
         -- Send the dht data to the relayr Cloud
-        relayr.send({{ meaning = 'Temperature', value = temp },
-            { meaning = 'Humidity', value = humi },
-            { meaning = 'Switch', value = magneticValue}})
+        relayr.send({{ meaning = 'temperature', value = temp },
+            { meaning = 'humidity', value = humi },
+            { meaning = 'door', value = magneticValue}})
     end
 end
 
