@@ -4,15 +4,17 @@ This tutorial will guide you through an example NodeMCU project written in Lua. 
 
 ##Firmware
 
-Download the NodeMCU build here. Choose the dev branch (MQTT module works better) and select the modules that you need: cjson, dht, gpio, mqtt, tmr, file and wifi (you can add anything else you would like to play around with).
+Download the NodeMCU build [here](http://nodemcu-build.com/). Choose the **dev** branch (MQTT module works better) and select the modules that you need: cjson, dht, gpio, mqtt, tmr, file and wifi (you can add anything else you would like to play around with).
 
-After you receive the custom build, install the SiLabs serial driver for NodeMCU boards or CH340 driver for WeMos boards. Flash the ESP device with the help of ESPtool. This command might be nifty:
+After you receive the custom build, install the [SiLabs serial driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip) for NodeMCU boards or [CH340 driver](http://www.wemos.cc/downloads/) for WeMos boards. Flash the ESP device with the help of [ESPtool](https://github.com/themadinventor/esptool). This command might be nifty: 
 
-esptool.py -p /dev/yourUSBoutput write_flash -fm dio -fs 32m -ff 40m 0x0 yourpath/your.bin
+	esptool.py -p /dev/yourUSBoutput write_flash -fm dio -fs 32m -ff 40m 0x0 yourpath/your.bin
+
 You'll have to change the paths to point at your port and bin file! To list the names of available ports you can use the following command:
+	
+	ls /dev/cu*
 
-ls /dev/cu*
-After flashing the firmware you can use the ESPlorer as a very basic IDE to ease your interaction with the ESP8266 (you'll need JDK). Now you're ready to start programming your ESP device, check out the docs for some basic commands.
+After flashing the firmware you can use the [ESPlorer](http://esp8266.ru/esplorer/) as a very basic IDE to ease your interaction with the ESP8266 (you'll need [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)). Now you're ready to start programming your ESP device, check out the [docs](https://nodemcu.readthedocs.io/) for some basic commands.
 
 ##Example project
 
